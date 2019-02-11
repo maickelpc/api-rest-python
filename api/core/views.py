@@ -11,7 +11,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class RoleViewSet(viewsets.ModelViewSet):
-    queryset = Role.objects.prefetch_related('permissions').all()
+    queryset = Role.objects.all()
     serializer_class = RoleSerializer
 
 class PermissionViewSet(viewsets.ModelViewSet):
