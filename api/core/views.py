@@ -6,6 +6,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import PermissionSerializer, RoleSerializer, UserSerializer
 from .models import Permission, Role, User
 from rest_framework.decorators import action
+
+
 # Create your views here.
 
 
@@ -101,6 +103,8 @@ class PermissionViewSet(viewsets.ModelViewSet):
 #    queryset = Permission.objects.all()
     serializer_class = PermissionSerializer
     filter_backends = (DjangoFilterBackend,)
+    # permission_classes = (IsAuthenticated,)
+    # authentication_classes = (TokenAuthentication,)
     filter_fields = ('active','description','permission') #Filter_backend
     lookup_field = 'permission';
 

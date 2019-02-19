@@ -11,6 +11,10 @@ Para inicializar, é necessário ter instalado o python3 ou superior e seguir os
 Para uso sem MYSQL comentar o bloco de código de configuração do mysql em api/api/settings.py e descomentar a parte do codigo para sqlite3
 
 
+#Api autorizado somente por token.
+Para requisitar o token, chama a URL da aplicação com o sufixo: /api-token-auth/, form-data ou x-www-form-urlencoded passando os campos username: 'login' e password: 'senha', caso de form-urlencoded, passar atributos como um Json { "username": "user", "password", "senha"}.
+
+Para acessar as outroas rotas da api, deve passar no Header a key "Authorization", com o valor "Token + tokenrespondidonometodoacima".
 
 
 #Nota:
