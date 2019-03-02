@@ -13,7 +13,7 @@ from rest_framework.decorators import action
 
 
 class UserViewSet(viewsets.ModelViewSet):
-#    queryset = User.objects.select_related('role').order_by('email').all()
+    queryset = User.objects.select_related('role').order_by('email').all()
     serializer_class = UserSerializer
 
     def get_queryset(self):
