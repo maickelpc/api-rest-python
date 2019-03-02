@@ -44,11 +44,11 @@ class UserViewSet(viewsets.ModelViewSet):
         return super(UserViewSet, self).list(request, *args, **kwargs)
 
 
-    def create(self, request, *args, **kwargs):
-        # Codigo com regrasabs
-
-        #deixe o Django fazer a magica dele
-        return super(UserViewSet, self).create(request, *args, **kwargs)
+    # def create(self, request, *args, **kwargs):
+    #     # Codigo com regrasabs
+    #
+    #     #deixe o Django fazer a magica dele
+    #     return super(UserViewSet, self).create(request, *args, **kwargs)
 
     def destroy(self, request, *args, **kwargs):
         # Codigo com regrasabs
@@ -81,10 +81,15 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(methods=['get'], detail=True)
     def resetPassword(self, request, pk=None):
-         # user = User.objects.get(id,pk)[0]
-         # user.password = '1234567890'
-         # user.save();
-         return Response({'Senha Alterada do usuário ID: ' + user.firstName})
+
+        user = User.objects.get(id=pk)
+        user.password = '1234567890'
+        user.save();
+        return Response({'Senha Alterada do usuário ID: ' + user.firstName})
+        #return Response({'Senha Alterada do usuário ID: ' + pk})
+
+
+
 
 
 class RoleViewSet(viewsets.ModelViewSet):
@@ -96,6 +101,14 @@ class RoleViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Role.objects.all()
+
+    def create(self, request, *args, **kwargs):
+        # Codigo com regrasabs
+
+        #deixe o Django fazer a magica dele
+        return super(UserViewSet, self).create(request, *args, **kwargs)
+
+
 
 
 
