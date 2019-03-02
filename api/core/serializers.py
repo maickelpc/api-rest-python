@@ -12,12 +12,15 @@ class PermissionSerializer(serializers.ModelSerializer):
         #fields = ('url', 'username', 'email', 'is_staff')
 
 class RoleSerializer(serializers.ModelSerializer):
+    permissions = PermissionSerializer(many=True)
     class Meta:
         model = Role
         fields = ('__all__')
 
 
 class UserSerializer(serializers.ModelSerializer):
+    role = RoleSerializer();
+
     class Meta:
         model = User
         fields = ('__all__')
