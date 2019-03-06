@@ -25,7 +25,7 @@ SECRET_KEY = 'g3e7tj761)q6c4ofrik_i-*yhqqw9__)fwbkcz7cot&3&-&@7r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["167.99.109.106"], ["ceasb.maickel.site"]
 
 
 # Application definition
@@ -79,20 +79,20 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 DATABASES = {
     # Configuração para sqlite3
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
 
     #Configuração para Mysql
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'api_django',
-        'USER': 'api_django',
-        'PASSWORD': 'api_django',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
-    }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME': 'ceasb',
+    #    'USER': 'ceasb',
+    #    'PASSWORD': '[]LDfS![+$7A;5{P',
+    #    'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+    #    'PORT': '3306',
+#	 }
 }
 
 
@@ -132,8 +132,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Para ativar o backend filter para todo o projeto, descomentar a linha abaixo
 # REST_FRAMEWORK = {
 #     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)

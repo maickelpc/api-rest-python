@@ -119,7 +119,7 @@ class PermissionViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
     # authentication_classes = (TokenAuthentication,)
     filter_fields = ('active','description','permission') #Filter_backend
-    lookup_field = 'permission';
+    #lookup_field = 'permission';
 
     def get_queryset(self):
         return Permission.objects.all()
