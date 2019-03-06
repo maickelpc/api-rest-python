@@ -16,7 +16,7 @@ Para requisitar o token, chama a URL da aplicação com o sufixo: /api-token-aut
 
 Para acessar as outroas rotas da api, deve passar no Header a key "Authorization", com o valor "Token + tokenrespondidonometodoacima".
 
-
+ 
 #Nota:
 na API Core, existem 3 formas de filtro de dados deixadas como exemplo para ser usada nos melhores momentos:
 
