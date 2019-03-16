@@ -1,4 +1,4 @@
-#!/var/www/html/api-restful-python/venv/bin/python3
+#!/var/www/maickel.dev/ceasb/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
