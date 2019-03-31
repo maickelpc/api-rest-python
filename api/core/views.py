@@ -39,7 +39,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.order_by('email').all()
     serializer_class = UserSerializer
     filter_backends = (SearchFilter,)
-    search_fields = ('username', 'name', 'last_name', 'email' )
+    search_fields = ('username', 'first_name', 'last_name', 'email' )
 
 
 class ProfileViewSet(viewsets.ModelViewSet):

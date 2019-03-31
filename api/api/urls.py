@@ -5,15 +5,19 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from core.views import ProfileViewSet, UserViewSet, MyTokenObtainPairView
-from rest_framework.authtoken.views import obtain_auth_token
+#from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView,)
 
+from core.views import ProfileViewSet, UserViewSet, MyTokenObtainPairView
+from acelerometro.views import LeituraViewSet, ArquivoViewSet, AcelerometroViewSet
 
 
 router = routers.DefaultRouter();
 router.register('profile',ProfileViewSet, 'Profile')
 router.register('user',UserViewSet,'User')
+router.register('dados/arquivo',ArquivoViewSet, 'Arquivo')
+router.register('dados/leitura',LeituraViewSet,'Leitura')
+router.register('acelerometro',AcelerometroViewSet, 'Acelerometro')
 
 urlpatterns = [
     #path('api-token-auth/', obtain_auth_token),
