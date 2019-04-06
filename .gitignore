@@ -2,3 +2,7 @@ venv/bin
 venv/bin*
 venv/bin/
 venv/bin/*
+/venv/bin
+/venv/bin*
+/venv/bin/
+/venv/bin/*
