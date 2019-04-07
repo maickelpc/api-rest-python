@@ -6,3 +6,6 @@ class Acelerometro(models.Model):
     descricao = models.CharField(max_length=100)
     localizacao = models.CharField(max_length=100)
     qtdeEixos = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return self.descricao;

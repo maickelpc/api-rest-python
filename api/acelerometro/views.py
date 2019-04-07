@@ -3,12 +3,13 @@ import random
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db import transaction
+from django.db.models import StdDev, Avg
 from rest_framework import viewsets
 from rest_framework.response import Response
 # from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
-from django.core.files import temp as tempfile 
+from django.core.files import temp as tempfile
 from django.core.files.uploadedfile import UploadedFile
 
 from .model.acelerometro import Acelerometro
@@ -39,7 +40,7 @@ class LeituraViewSet(viewsets.ModelViewSet):
     page_size = 1000
     page_size_query_param = 'page_size'
     max_page_size = 10000
-    
+
 
 
 
@@ -51,24 +52,24 @@ class ArquivoViewSet(viewsets.ModelViewSet):
     filter_fields = ('id','usuario__id')
 
     @action(methods=['get'], detail=True)
-    def leituras(self, request, pk):    
+    def leituras(self, request, pk):
         arquivo = Arquivo.objects.filter(pk=pk).get()
         serializer = ArquivoSerializerCompleto(arquivo)
-        
+
         return Response(serializer.data)
-        
+
 
 
     @action(methods=['post'], detail=False)
     def upload(self, request):
-        
+
         id = 0
         try:
-            
+
             with transaction.atomic():
                 acelerometroId = request.POST.get('acelerometro')
                 acelerometro = Acelerometro.objects.filter(pk=acelerometroId).get()
-                
+
                 fileUpload = UploadedFile(request.FILES['file'])
 
                 arquivo = Arquivo()
@@ -94,24 +95,42 @@ class ArquivoViewSet(viewsets.ModelViewSet):
                         x = aux.split(" ")
                         # print(x)
                         for n in x:
-                            valor = n
                             print(n)
+                            valor = n
+                            valor = valor.split('E')
+                            print(valor)
+                            ref = str(valor[1])
+                            ref = ref.find('-')
+                            potencia = valor[1][1:]
+                            potencia = int(potencia)
+                            valor = valor[0]
+                            valor = float(valor)
+                            multiplicador = 1
+                            for i in range(1,potencia + 1):
+                                multiplicador = multiplicador * 10
+                            if(ref == -1):
+                                valor = (valor * multiplicador)
+                            else:
+                                valor = (valor / multiplicador)
+                            # print(n)
                             leitura = Leitura()
                             leitura.dataLeitura = datetime.datetime.now()
                             leitura.eixo = 1
                             leitura.arquivo = arquivo
                             leitura.registro = indiceLeitura
-                            # leitura.valor = valor  # Aqui substitui pelo valor em notacaocientifica convertido
-                            leitura.valor = random.random()                           
+                            leitura.valor = valor  # Aqui substitui pelo valor em notacaocientifica convertido
+                            # leitura.valor = random.random()
                             leitura.save()
                             indiceLeitura +=1
                     l += 1
                 arquivo.qtdeRegistros = indiceLeitura+1
-                # arquivo.media = 0
-                # arquivo.desvioPadrao = 0
+                media = Leitura.objects.filter(arquivo=arquivo).aggregate(valor=Avg('valor'))
+                desvioPadrao = Leitura.objects.filter(arquivo=arquivo).aggregate(valor=StdDev('valor'))
+                arquivo.media = media['valor']
+                arquivo.desvioPadrao = desvioPadrao['valor']
+
                 arquivo.save()
                 id = arquivo.id
             return Response({id})
         except ValueError:
             return Response({ValueError}, 400)
-    

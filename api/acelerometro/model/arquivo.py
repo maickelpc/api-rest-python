@@ -9,6 +9,15 @@ class Arquivo(models.Model):
     dataInicialLeitura = models.DateTimeField()
     frequenciaTempo = models.FloatField()
     qtdeRegistros = models.BigIntegerField()
-    media = models.FloatField()
-    desvioPadrao = models.FloatField()
+    media = models.DecimalField(max_digits=10, decimal_places=10, null=True)
+    desvioPadrao = models.DecimalField(max_digits=10, decimal_places=10, null=True)
     usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name='usuario')
+
+    def __str__(self):
+        retorno = []
+        retorno.append(self.id)
+        retorno.append(" - ")
+        retorno.append(self.acelerometro.descricao)
+        retorno.append(" / ")
+        retorno.append(self.dataLancamento)
+        return retorno

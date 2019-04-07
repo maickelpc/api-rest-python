@@ -115,24 +115,24 @@ DATABASES = {
      #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
      # }
     #Configuração para Mysql (Maickel note)
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'api_django',
-       'USER': 'root',
-       'PASSWORD': 'tuma',
-       'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-       'PORT': '3306',
-	 }
-
-    #Configuração para Mysql (Maickel Server)
    # 'default': {
    #     'ENGINE': 'django.db.backends.mysql',
-   #     'NAME': 'ceasb',
-   #     'USER': 'ceasb',
-   #     'PASSWORD': '[]LDfS![+$7A;5{P',
+   #     'NAME': 'api_django',
+   #     'USER': 'root',
+   #     'PASSWORD': 'tuma',
    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
    #     'PORT': '3306',
 	#  }
+
+    #Configuração para Mysql (Maickel Server)
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'ceasb',
+       'USER': 'ceasb',
+       'PASSWORD': '[]LDfS![+$7A;5{P',
+       'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+       'PORT': '3306',
+	 }
 }
 
 
