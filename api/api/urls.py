@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshVie
 
 from core.views import ProfileViewSet, UserViewSet, MyTokenObtainPairView
 from acelerometro.views import LeituraViewSet, ArquivoViewSet, AcelerometroViewSet
+from bloco.views import BlocoViewSet
 
 
 router = routers.DefaultRouter();
@@ -18,6 +19,7 @@ router.register('user',UserViewSet,'User')
 router.register('dados/arquivo',ArquivoViewSet, 'Arquivo')
 router.register('dados/leitura',LeituraViewSet,'Leitura')
 router.register('acelerometro',AcelerometroViewSet, 'Acelerometro')
+router.register('bloco',BlocoViewSet, 'Bloco')
 
 urlpatterns = [
     #path('api-token-auth/', obtain_auth_token),
