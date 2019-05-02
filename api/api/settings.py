@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'core', # Registra a aplicação
     'acelerometro',
     'bloco'
+    
 ]
 
 MIDDLEWARE = [
