@@ -47,7 +47,8 @@ INSTALLED_APPS = [
 
     'core', # Registra a aplicação
     'acelerometro',
-    'bloco'
+    'bloco',
+    'fdd'
     
 ]
 
@@ -117,24 +118,16 @@ DATABASES = {
      #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
      # }
     #Configuração para Mysql (Maickel note)
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'api_django',
-       'USER': 'root',
-       'PASSWORD': 'tuma',
-       'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-       'PORT': '3306',
-	 }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ceasb',
+        # 'NAME': os.path.join(BASE_DIR, 'mydb'),
+        'USER': 'dev',
+        'PASSWORD': 'dev',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',  # 8000 is default
+    }
 
-    #Configuração para Mysql (Maickel Server)
-   # 'default': {
-   #     'ENGINE': 'django.db.backends.mysql',
-   #     'NAME': 'ceasb',
-   #     'USER': 'ceasb',
-   #     'PASSWORD': '[]LDfS![+$7A;5{P',
-   #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-   #     'PORT': '3306',
-	#  }
 }
 
 
@@ -160,9 +153,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 

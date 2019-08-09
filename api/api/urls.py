@@ -11,12 +11,14 @@ from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshVie
 from core.views import ProfileViewSet, UserViewSet, MyTokenObtainPairView
 from acelerometro.views import LeituraViewSet, ArquivoViewSet, AcelerometroViewSet
 from bloco.views import BlocoViewSet, BlocoAceleracaoViewSet, BlocoAcelerometroViewSet
+from fdd.views import ArquivoViewSet
 
 
 router = routers.DefaultRouter();
 router.register('profile',ProfileViewSet, 'Profile')
 router.register('user',UserViewSet,'User')
-router.register('dados/arquivo',ArquivoViewSet, 'Arquivo')
+router.register('fdd/arquivo',ArquivoViewSet,'Arquivo')
+# router.register('dados/arquivo',ArquivoViewSet, 'Arquivo')
 router.register('dados/leitura',LeituraViewSet,'Leitura')
 #router.register('acelerometro',AcelerometroViewSet, 'Acelerometro')
 router.register('bloco',BlocoViewSet, 'Bloco')
