@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    # 'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,21 +70,23 @@ ROOT_URLCONF = 'api.urls'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = (
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
+    '*'
+    # 'DELETE',
+    # 'GET',
+    # 'OPTIONS',
+    # 'PATCH',
+    # 'POST',
+    # 'PUT',
 )
 CORS_ALLOW_HEADERS = (
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
+    '*'
+    # 'accept',
+    # 'accept-encoding',
+    # 'authorization',
+    # 'content-type',
+    # 'dnt',
+    # 'origin',
+    # 'user-agent',
 #    'x-csrftoken',
 #    'x-requested-with',
 )
@@ -172,7 +175,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 # Para ativar o backend filter para todo o projeto, descomentar a linha abaixo
 # REST_FRAMEWORK = {

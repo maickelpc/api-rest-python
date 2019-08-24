@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Arquivo
+from .models import ArquivoFdd
 
-class ArquivoSimplificadoSerializer(serializers.ModelSerializer):
+class ArquivoFddSimplificadoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Arquivo
+        model = ArquivoFdd
         fields = ('__all__')

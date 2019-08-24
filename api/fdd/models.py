@@ -36,16 +36,21 @@ class Aceleracao(models.Model):
     bloco = models.ForeignKey(Bloco, on_delete=models.CASCADE, related_name='aceleracao_bloco')
     acelerometro = models.ForeignKey(Acelerometro, on_delete=models.CASCADE, related_name='aceleracao_acelerometro')
 
-class Arquivo(models.Model):
+class ArquivoFdd(models.Model):
     id = models.AutoField(primary_key=True)
     codigo = models.CharField(max_length=30)
-    arquivo = models.FileField()
-    data = models.DateTimeField()
+    descricao = models.CharField(max_length=255)
+    arquivo = models.FileField(upload_to='fdd_files')
+    canais = models.SmallIntegerField()
+    data = models.DateTimeField(auto_now_add=True)
+    dataInicio = models.DateTimeField()
+    frequencia = models.CharField(max_length=20)
 
     def __str__(self):
         return self.codigo
 
 class FDD(models.Model):
+    id = models.AutoField(primary_key=True)
 
     def power_spectral_density( degrees, fourier_transform_size, stream_file,delta ):
         cross_spectral_density = np.zeros((degrees, degrees,  int((fourier_transform_size / 2)+1)),dtype=complex)  # Store the data 01 by means of a three-dimensional matrix 5 * 5 * 1025
